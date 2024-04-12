@@ -1,13 +1,12 @@
 package com.solventum.tinyurl.controller;
 
-import jakarta.websocket.server.PathParam;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * Controller class for handling TinyURL operations.
  */
 @RestController
-public class TinyURLController {
+public class TinyURLControllerImpl {
     /**
      * Encodes a URL to a shortened URL.
      *

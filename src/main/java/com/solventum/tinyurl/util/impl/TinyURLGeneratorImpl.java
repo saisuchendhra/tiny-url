@@ -1,7 +1,9 @@
 package com.solventum.tinyurl.util.impl;
 
+import com.solventum.tinyurl.model.TinyURL;
 import com.solventum.tinyurl.util.TinyURLGenerator;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class TinyURLGeneratorImpl implements TinyURLGenerator {
@@ -23,8 +25,20 @@ public class TinyURLGeneratorImpl implements TinyURLGenerator {
     }
 
     @Override
-    public String generateTinyURL() {
+    public TinyURL generateTinyURL() {
         long id  = getNextID();
-        return convertIDToBase62(id);
+        String base62ID = convertIDToBase62(id);
+        TinyURL tinyURL = TinyURL.builder()
+                .tinyURL(base62ID)
+                .key(id)
+                .creationTime(LocalDateTime.now())
+                .build();
+
+        return tinyURL;
+    }
+
+    @Override
+    public long getCurrentID() {
+        return COUNTER.get();
     }
 }
