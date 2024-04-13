@@ -1,6 +1,10 @@
 package com.solventum.tinyurl.service;
 
+import com.solventum.tinyurl.model.TinyURL;
+import org.springframework.stereotype.Service;
+
 public interface TinyURLService {
-    public String getTinyURL(String originalURL);
-    public String getOriginalURL(String tinyURL);
+     String getTinyURL(String originalURL);
+     String getOriginalURL(String tinyURL);
+     void insertTinyURL(TinyURL tinyURL, String originalURL);
 }
