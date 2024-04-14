@@ -12,6 +12,13 @@ public class TinyURLGeneratorImpl implements TinyURLGenerator {
     private static final AtomicLong COUNTER  = new AtomicLong(2000000000000L);
     private static final String BASE_62_CHARACTERS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String PREFIX_URL = "http://short.est/";
+
+    /**
+     * Increments the counter and returns the next ID.
+     *
+     * @return The next ID
+     * @throws RuntimeException If an error occurs while getting the key for the long URL
+     */
     @Override
     public long getNextID() {
         try{
@@ -22,6 +29,13 @@ public class TinyURLGeneratorImpl implements TinyURLGenerator {
         }
     }
 
+    /**
+     * Converts the given ID to a Base62 representation.
+     *
+     * @param id The ID to convert
+     * @return The Base62 representation of the ID
+     * @throws RuntimeException If an error occurs while converting to Base62
+     */
     @Override
     public String convertIDToBase62(long id) {
         try{
@@ -37,6 +51,11 @@ public class TinyURLGeneratorImpl implements TinyURLGenerator {
         }
     }
 
+    /**
+     * Generates a TinyURL using the current ID.
+     *
+     * @return The generated TinyURL
+     */
     @Override
     public TinyURL generateTinyURL() {
         long id  = getNextID();
@@ -48,6 +67,12 @@ public class TinyURLGeneratorImpl implements TinyURLGenerator {
                 .build();
     }
 
+    /**
+     * Retrieves the current ID.
+     *
+     * @return The current ID
+     * @throws RuntimeException If an error occurs while getting the current ID
+     */
     @Override
     public long getCurrentID() {
         try{
@@ -56,6 +81,5 @@ public class TinyURLGeneratorImpl implements TinyURLGenerator {
         catch (Exception ex){
             throw new RuntimeException("Exception thrown while getting currentID");
         }
-
     }
 }
