@@ -24,7 +24,7 @@ public class TinyURLServiceImpl implements TinyURLService {
     TinyURLGenerator tinyURLGenerator;
 
     /**
-     * calls the tinyURLGenerator class to get the tinyURL from the originalURL
+     * Calls the tinyURLGenerator class to get the tinyURL from the originalURL
      * @param originalURL
      * @return
      */
@@ -44,7 +44,7 @@ public class TinyURLServiceImpl implements TinyURLService {
 
 
     /**
-     * gets original URL by calling the repository bean
+     * Gets original URL by calling the repository bean
      * @param tinyURL
      * @return
      */
