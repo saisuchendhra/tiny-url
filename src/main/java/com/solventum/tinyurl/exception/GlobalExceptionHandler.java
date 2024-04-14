@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({TinyURLNotFoundException.class})
     public ResponseEntity<Object> handleTinyURLNotFoundException(TinyURLNotFoundException exception) {
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
+                .status(HttpStatus.NOT_FOUND)
                 .body(exception.getMessage());
     }
 

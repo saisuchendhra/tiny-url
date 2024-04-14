@@ -37,8 +37,6 @@ public class TinyURLController {
      */
     @PostMapping("v1/encode")
     public ResponseEntity<String> encodeTinyURL(@Valid @RequestBody RequestDTO originalURL){
-
-        logger.info("originalURL : "+originalURL);
         if (originalURL == null || originalURL.equals("")) {
             throw new IllegalArgumentException("Request body contains null value for the URL");
         }
@@ -54,8 +52,8 @@ public class TinyURLController {
      * @param tinyUrl The shortened URL to be decoded.
      * @return The original URL.
      */
-    @GetMapping("v1/decode/{tinyUrl}")
-    public ResponseEntity<String> decodeOriginalURL(@PathVariable(required = true) String tinyUrl){
+    @GetMapping("v1/decode")
+    public ResponseEntity<String> decodeOriginalURL(@RequestParam(required = false) String tinyUrl){
 
         logger.debug(tinyUrl);
         if (tinyUrl == null || tinyUrl.equals("")) {
@@ -66,8 +64,4 @@ public class TinyURLController {
         return ResponseEntity.ok(originalURL);
     }
 
-    @GetMapping("v1/decode/")
-    public ResponseEntity<String> emptyParam(){
-            throw new IllegalArgumentException("Request Parameter for the tiny URL cannot be empty");
-    }
 }

@@ -31,9 +31,7 @@ public class TinyURLServiceImpl implements TinyURLService {
     @Override
     public String getTinyURL(String originalURL) {
         if(tinyURLRepository.getTinyURL(originalURL)!=null){
-            throw new
-                    TinyURLAlreadyExistsException("Tiny URL Already exists for this Long URL : "
-                    +tinyURLRepository.getTinyURL(originalURL));
+            return tinyURLRepository.getTinyURL(originalURL);
         }
 
         TinyURL tinyURL = Optional.ofNullable(tinyURLGenerator.generateTinyURL())

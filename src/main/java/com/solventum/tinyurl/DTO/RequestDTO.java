@@ -15,6 +15,6 @@ import lombok.NoArgsConstructor;
 public class RequestDTO {
     @NotBlank(message = "Invalid URL: Empty name")
     @NotNull(message = "Invalid URL: Name is NULL")
-    @Pattern(regexp = "^https?://[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "Invalid URL: Not a valid URL format")
+    @Pattern(regexp = "^(https?://[^/]+)?(/[^\\s]*)?$", message = "Invalid URL: Not a valid URL format")
     String url;
 }
